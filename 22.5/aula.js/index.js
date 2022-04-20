@@ -9,9 +9,8 @@ const API = 'https://api.coindesk.com/v1/bpi/currentprice/BTC.json';
 
 const tokenValidation = (req, res, next) => {
 	const tokenTest = /^[a-zA-Z0-9]$/;
-	const token = 'aaaaaaaaaaa1';
-	console.log(token);
-	if (tokenTest.test(token)) return res.status(401).json({ 'message':'invalid token'});
+	const { token } = req.headers;
+	if (tokenTest.test(token) || token.length === 12) return res.status(401).json({ 'message':'invalid token'});
 	next();
 };
 
