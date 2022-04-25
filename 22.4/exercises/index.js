@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { appendFile } = require('fs');
-const { application } = require('express');
+
+const { getSimpsons, setSimpsons } = require("./fs-utils");
 
 app = express();
 
@@ -33,8 +33,47 @@ app.put('/user/:name/:age',(req,res) => {
 
 })
 
+app.get('/simpsons',async (_req,res) => {
+  try {
+    const result = await getSimpsons()
+    return res.status(200).json(result); 
+  } catch (error) {
+    return res.status(500).end();
+  }
+})
+
+app.get('/simpsons/:id', async (req, res) => {
+  try {
+    const {id} = req.params;
+    const result = await getSimpsons();
+    const filtredResult = result.find((e) => e.id === id);
 
 
+    if (!filtredResult) {
+      // não esqueça de adicionar o return para impedir de que seu código continue.
+      return res.status(404).json({ message: 'simpson not found' });
+    }
+
+    return res.status(202).json(filtredResult);
+  }
+  catch (e) {
+    return res.status(500).end()
+  }
+})
+
+app.post('/simpson',async (req, res) => {
+  const {id,name} = req.body
+
+  try {
+    result = await setSimpsons({
+      id: id,
+      name: name 
+    })
+    return res.status(200).json({"message":"pod cola dog"})
+  } catch (error) {
+    console.log('q papelão hein')
+  }
+})
 
 app.listen(3010, () => {
   console.log("ouvindo na porta 3010");
