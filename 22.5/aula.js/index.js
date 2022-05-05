@@ -20,6 +20,4 @@ app.get('/btc/price', tokenValidation, async (req, res) => {
 	return res.status(200).json(response.data);
 });
 
-app.listen(PORT, () => console.log('Run server http://localhost:3000'));
-
-// http://localhost:3000/btc/price?token=123456789abc
+app.listen(PORT, () => console.log('Run server at: http://localhost:3000'));

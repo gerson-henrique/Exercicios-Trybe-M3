@@ -1,6 +1,6 @@
 const calcularDivisao = (n1, n2) => {
   const promise = new Promise((resolve,reject) => {
-    if(n2 == 0 ) reject(Error("Não divizão por zero"));
+    if(n2 == 0 ) reject(Error,"Não divizão por zero");
     const result = n1 / n2;
     resolve(result)
   });
