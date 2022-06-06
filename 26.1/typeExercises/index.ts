@@ -1,7 +1,7 @@
 type Character = {
   nickname: string;
   class: string;
-  status: {
+  stats: {
     agi: number;
     str: number;
     int: number;
@@ -11,7 +11,7 @@ type Character = {
   createdAt: Date;
 };
 
-const characters: Character = [
+const characters: Character[] = [
   {
     nickname: 'xKillerx',
     class: 'warrior',
@@ -32,7 +32,7 @@ const characters: Character = [
   },
 ]
 
-function printCharacter(character: any, index: number) {
+function printCharacter(character: Character, index: number) {
   const { nickname, class: cls, createdAt } = character;
 
   console.log(`\n\n===== Character: ${index + 1} ========`);
