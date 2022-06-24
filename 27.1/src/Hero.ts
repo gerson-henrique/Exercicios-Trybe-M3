@@ -6,11 +6,16 @@ class Hero {
   level: number = 0;
   weakness: Array<string> = [];
 
+  sayHello(): string {
+    return `${this._name} Says LETS GO`
+  }
+
   constructor (name: string, age: number, powers: Array<string>) {
     this._name = name;
     this._age = age;
     this._powers = powers;
   }
+
 
   get name(): string {
     return this._name
@@ -28,3 +33,6 @@ const hero2: Hero = new Hero('Luka',22,['Anger Furry']);
 
 console.log(hero1.name);
 console.log(hero2.name);
+console.log(hero1.sayHello());
+
+export default Hero
