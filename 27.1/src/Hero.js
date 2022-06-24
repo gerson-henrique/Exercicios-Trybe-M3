@@ -10,4 +10,6 @@ class Hero {
     }
 }
 const hero1 = new Hero('Gero', 24, ['Display of Power']);
+const hero2 = new Hero('Luka', 22, ['Anger Furry']);
 console.log(hero1.name);
+console.log(hero2.name);
